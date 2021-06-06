@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title|capfirst }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="login-form"
+     style="width: 200px; margin: 5vh auto; padding-top: 250px; margin-bottom: 25px;">
+    <div class="form-title"
+         style="text-align: center; font-weight: bold; font-size: larger;">Вход в систему</div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"
+               class="btn btn-success form-control text-center"
+               value="Войти"
+               style=" width: 200px;">
+    </form>
+    <br>
+    <a class="btn btn-danger form-control text-center"
+       style=" width: 200px;"
+       href="{% url 'authapp:register' %}">
+        Регистрация
+    </a>
+</div>
+</body>
+</html>
